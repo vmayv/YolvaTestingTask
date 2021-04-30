@@ -12,7 +12,7 @@ namespace YolvaTestingTask
         public string Type { get; set; }
 
         [JsonProperty("coordinates")]
-        public List<List<List<double>>> Coordinates { get; set; }
+        public List<object> Coordinates { get; set; }
 
         /*
         [JsonProperty("coordinates")]

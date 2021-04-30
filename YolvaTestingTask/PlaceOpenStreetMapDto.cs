@@ -10,7 +10,7 @@ namespace YolvaTestingTask
     {
         [JsonProperty("place_id")]
         public int PlaceId { get; set; }
-
+        /*
         [JsonProperty("licence")]
         public string Licence { get; set; }
 
@@ -28,10 +28,10 @@ namespace YolvaTestingTask
 
         [JsonProperty("lon")]
         public string Lon { get; set; }
-
+        */
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }
-
+        /*
         [JsonProperty("class")]
         public string Class { get; set; }
 
@@ -43,7 +43,7 @@ namespace YolvaTestingTask
 
         [JsonProperty("icon")]
         public string Icon { get; set; }
-
+        */
         [JsonProperty("geojson")]
         public Geojson Geojson { get; set; }
 

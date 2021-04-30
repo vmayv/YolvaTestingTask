@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
-using System.Text.Json;
 
 namespace YolvaTestingTask
 {
@@ -23,6 +22,8 @@ namespace YolvaTestingTask
             var streamReader = new StreamReader(responseStream).ReadToEnd();
 
             var a = JsonConvert.DeserializeObject<List<PlaceOpenStreetMapDto>>(streamReader);
+            Console.WriteLine(typeof(List<double>).ToString()); 
+            Console.WriteLine(typeof(List<List<double>>).ToString());
 
             //var a = JsonSerializer.Deserialize<PlaceOpenStreetMapDto>(streamReader);
             //var b = JsonSerializer.DeserializeAsync<PlaceOpenStreetMapDto>(responseStream, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }).Result;
