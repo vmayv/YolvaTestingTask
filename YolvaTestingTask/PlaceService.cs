@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -18,7 +20,12 @@ namespace YolvaTestingTask
 
             using var responseStream = response.Content.ReadAsStreamAsync().Result;
 
-            var b = JsonSerializer.DeserializeAsync<List<PlaceOpenStreetMapDto>>(responseStream, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }).Result;
+            var streamReader = new StreamReader(responseStream).ReadToEnd();
+
+            var a = JsonConvert.DeserializeObject<List<PlaceOpenStreetMapDto>>(streamReader);
+
+            //var a = JsonSerializer.Deserialize<PlaceOpenStreetMapDto>(streamReader);
+            //var b = JsonSerializer.DeserializeAsync<PlaceOpenStreetMapDto>(responseStream, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }).Result;
 
             return null;
         }

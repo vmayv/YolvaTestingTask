@@ -9,7 +9,7 @@ namespace YolvaTestingTask
         public string Name { get; set; }
         public List<Point> points;
 
-        Place(string name)
+        public Place(string name)
         {
             Name = name;
             points = new List<Point>();
