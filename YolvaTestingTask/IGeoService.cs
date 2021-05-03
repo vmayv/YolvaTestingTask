@@ -4,8 +4,8 @@ using System.Text;
 
 namespace YolvaTestingTask
 {
-    public interface IGeoService
+    public interface IGeoService<T>
     {
-        public IList<Place> GetPlaces(string address);
+        public IList<T> GetPlaces(string address);
     }
 }

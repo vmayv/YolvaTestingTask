@@ -10,7 +10,7 @@ namespace YolvaTestingTask
 {
     class PlaceService
     {
-        public IList<Place> GetPlaces(string address)
+        public IList<PlaceOpenStreetMapDto> GetPlaces(string address)
         {
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
@@ -21,14 +21,18 @@ namespace YolvaTestingTask
 
             var streamReader = new StreamReader(responseStream).ReadToEnd();
 
-            var a = JsonConvert.DeserializeObject<List<PlaceOpenStreetMapDto>>(streamReader);
-            Console.WriteLine(typeof(List<double>).ToString()); 
-            Console.WriteLine(typeof(List<List<double>>).ToString());
+            var allObjects = JsonConvert.DeserializeObject<List<PlaceOpenStreetMapDto>>(streamReader);
 
-            //var a = JsonSerializer.Deserialize<PlaceOpenStreetMapDto>(streamReader);
-            //var b = JsonSerializer.DeserializeAsync<PlaceOpenStreetMapDto>(responseStream, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }).Result;
+            var result = new List<PlaceOpenStreetMapDto>();
 
-            return null;
+            foreach (var x in allObjects)
+            {
+                if (x.Geojson.Polygons != null)
+                {
+                    result.Add(x);
+                }
+            }
+                return result;
+            }
         }
     }
-}

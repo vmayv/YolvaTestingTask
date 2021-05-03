@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Text.Json.Serialization;
 
 namespace YolvaTestingTask
 {
@@ -45,6 +44,7 @@ namespace YolvaTestingTask
         public string Icon { get; set; }
         */
         [JsonProperty("geojson")]
+        [JsonConverter(typeof(GeoJsonConverter))]
         public Geojson Geojson { get; set; }
 
         /*

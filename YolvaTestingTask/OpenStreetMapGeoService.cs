@@ -6,7 +6,7 @@ using System.Text.Json;
 
 namespace YolvaTestingTask
 {
-    public class OpenStreetMapGeoService : IGeoService
+    public class OpenStreetMapGeoService : IGeoService<PlaceOpenStreetMapDto>
     {
         string url = "https://nominatim.openstreetmap.org/search";
         private readonly PlaceService placeService;
@@ -16,7 +16,7 @@ namespace YolvaTestingTask
             placeService = new PlaceService();
         }
 
-        public IList<Place> GetPlaces(string address)
+        public IList<PlaceOpenStreetMapDto> GetPlaces(string address)
         {
             Uri requestUri = new Uri($"{url}?q={address}&format=json&polygon_geojson=1");
             return placeService.GetPlaces(requestUri.AbsoluteUri);
