@@ -26,9 +26,9 @@ namespace YolvaTestingTask
                 {
                     foreach (var c in b)
                     {
-                        if (c.Count < pointsFrequency)
+                        if (c.Count < pointsFrequency || pointsFrequency == 0)
                         {
-                            return;
+                            break;
                         }
                         else
                         {
@@ -36,7 +36,7 @@ namespace YolvaTestingTask
                             {
                                 c.RemoveAt(i);
                             }
-                            if (c[c.Count-1] != c[0])
+                            if (c[c.Count - 1] != c[0])
                             {
                                 c[c.Count - 1] = c[0];
                             }
