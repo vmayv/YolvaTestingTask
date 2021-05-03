@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace YolvaTestingTask
@@ -19,10 +20,31 @@ namespace YolvaTestingTask
             OpenStreetMapGeoService x = new OpenStreetMapGeoService();
             var result = x.GetPlaces(address);
 
-            /*foreach(var place in result)
+            foreach (var item in result)
             {
-                if(place.Geojson.Polygons)
-            }*/
+                foreach (var b in item.Geojson.Polygons)
+                {
+                    foreach (var c in b)
+                    {
+                        if (c.Count < pointsFrequency)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            for (int i = 0; i < c.Count; i += pointsFrequency)
+                            {
+                                c.RemoveAt(i);
+                            }
+                            if (c[c.Count-1] != c[0])
+                            {
+                                c[c.Count - 1] = c[0];
+                            }
+                        }
+                    }
+                }
+            }
+
 
             string json = JsonConvert.SerializeObject(result);
 
