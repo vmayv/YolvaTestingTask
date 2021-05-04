@@ -6,6 +6,6 @@ namespace YolvaTestingTask
 {
     public interface IGeoService<T>
     {
-        public IList<T> GetPlaces(string address);
+        public IList<T> GetPlaces(string address, int pointsFrequency);
     }
 }

@@ -16,10 +16,10 @@ namespace YolvaTestingTask
             placeService = new PlaceService();
         }
 
-        public IList<PlaceOpenStreetMapDto> GetPlaces(string address)
+        public IList<PlaceOpenStreetMapDto> GetPlaces(string address, int pointsFrequency)
         {
             Uri requestUri = new Uri($"{url}?q={address}&format=json&polygon_geojson=1");
-            return placeService.GetPlaces(requestUri.AbsoluteUri);
+            return placeService.GetPlaces(requestUri.AbsoluteUri, pointsFrequency);
         }
     }
 }
