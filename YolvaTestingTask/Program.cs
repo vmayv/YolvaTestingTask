@@ -8,7 +8,7 @@ namespace YolvaTestingTask
     class Program
     {
         static void Main(string[] args)
-        {
+        {// TODO: Проверки корректности введённых данных
             Console.WriteLine("Введите адрес: ");
             string address = Console.ReadLine();
             Console.WriteLine("Введите имя сохраняемого файла: ");
